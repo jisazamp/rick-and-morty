@@ -10,6 +10,16 @@ import Pagination from '../layout/Pagination';
 const CharactersTable = () => {
   const { characters, filteredCharacters } = useContext(CharacterContext);
 
+  const headers = [
+    'Vivo',
+    'Especie',
+    'Género',
+    'Origen',
+    'Locación',
+    'Capítulos',
+    'Fecha',
+  ];
+
   const renderCharacterStatus = (status) => {
     if (status === 'Alive') return <img src={AliveIcon} alt='Vivo' />;
     if (status === 'Dead') return <img src={DeadIcon} alt='Muerto' />;
@@ -80,27 +90,11 @@ const CharactersTable = () => {
               <th scope='col' className='px-6 py-3 bg-[#506266] rounded-tl-lg'>
                 Nombre
               </th>
-              <th scope='col' className='px-6 py-3 bg-[#506266]'>
-                Vivo
-              </th>
-              <th scope='col' className='px-6 py-3 bg-[#506266]'>
-                Especie
-              </th>
-              <th scope='col' className='px-6 py-3 bg-[#506266]'>
-                Género
-              </th>
-              <th scope='col' className='px-6 py-3 bg-[#506266]'>
-                Origen
-              </th>
-              <th scope='col' className='px-6 py-3 bg-[#506266]'>
-                Locación
-              </th>
-              <th scope='col' className='px-6 py-3 bg-[#506266]'>
-                Capítulos
-              </th>
-              <th scope='col' className='px-6 py-3 bg-[#506266]'>
-                Fecha
-              </th>
+              {headers.map((header) => (
+                <th key={header} scope='col' className='px-6 py-3 bg-[#506266]'>
+                  {header}
+                </th>
+              ))}
               <th scope='col' className='px-6 py-3 bg-[#506266] rounded-tr-lg'>
                 Acciones
               </th>

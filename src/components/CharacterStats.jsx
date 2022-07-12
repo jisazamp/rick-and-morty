@@ -1,5 +1,4 @@
 import { useEffect, useContext } from 'react';
-
 import CharacterContext from '../context/characters/CharacterContext';
 import {
   getCharacters,
