@@ -6,9 +6,9 @@ const CharacterContext = createContext();
 export const CharacterProvider = ({ children }) => {
   const initialState = {
     characters: [],
+    filteredCharacters: [],
     aliveCharacters: [],
     deadCharacters: [],
-    character: {},
     loading: false,
   };
 

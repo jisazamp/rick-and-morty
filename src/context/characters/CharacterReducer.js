@@ -9,8 +9,11 @@ const characterReducer = (state, action) => {
     case 'GET_DEAD_CHARACTERS':
       return { ...state, deadCharacters: action.payload, loading: false };
 
-    case 'SEARCH_CHARACTER':
-      return { ...state, character: action.payload, loading: false };
+    case 'SEARCH_CHARACTERS':
+      return { ...state, filteredCharacters: action.payload, loading: false };
+
+    case 'CLEAR_SEARCH':
+      return { ...state, filteredCharacters: [], loading: false };
 
     case 'SET_LOADING':
       return { ...state, loading: true };

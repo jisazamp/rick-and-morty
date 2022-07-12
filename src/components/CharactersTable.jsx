@@ -1,13 +1,24 @@
 import { useContext } from 'react';
 import CharacterContext from '../context/characters/CharacterContext';
+import { FaQuestionCircle } from 'react-icons/fa';
+
+import ImageIcon from '../images/Icono imagen.png';
+import AliveIcon from '../images/Icono de vivo.png';
+import DeadIcon from '../images/Icono de muerto.png';
 
 const CharactersTable = () => {
   const { characters } = useContext(CharacterContext);
 
+  const renderCharacterStatus = (status) => {
+    if (status === 'Alive') return <img src={AliveIcon} alt='Vivo' />;
+    if (status === 'Dead') return <img src={DeadIcon} alt='Muerto' />;
+    else return <FaQuestionCircle className='text-lg' />;
+  };
+
   return (
     <div className='border mt-6 rounded-lg border-gray-200 shadow-lg'>
       <div className='relative p-6 overflow-x-auto shadow-md'>
-        <table className='w-full text-sm text-left text-gray-500'>
+        <table className='w-full text-sm text-center text-gray-500'>
           <thead className='text-white'>
             <tr>
               <th scope='col' className='px-6 py-3 bg-[#506266] rounded-tl-lg'>
@@ -42,13 +53,10 @@ const CharactersTable = () => {
           <tbody>
             {characters.results?.map((c) => (
               <tr key={c.id}>
-                <th
-                  scope='row'
-                  className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap'
-                >
+                <th scope='row' className='px-6 py-4 font-medium text-gray-900'>
                   {c.name}
                 </th>
-                <td className='px-6 py-4'>{c.status}</td>
+                <td className='px-6 py-4'>{renderCharacterStatus(c.status)}</td>
                 <td className='px-6 py-4'>{c.species}</td>
                 <td className='px-6 py-4'>{c.gender}</td>
                 <td className='px-6 py-4'>{c.origin.name}</td>
@@ -59,7 +67,7 @@ const CharactersTable = () => {
                 </td>
                 <td className='px-6 py-4'>
                   <a href={c.image} target='_blank' rel='noreferrer'>
-                    Ver imagen
+                    <img src={ImageIcon} alt='Ver imagen' />
                   </a>
                 </td>
               </tr>
