@@ -81,7 +81,7 @@ const CharactersTable = () => {
   };
 
   return (
-    <div className='border mt-6 rounded-lg border-gray-200 shadow-lg'>
+    <div className=' border mt-6 rounded-lg border-gray-200 shadow-lg'>
       {!filteredCharacters.results && <Pagination />}
       <div className='relative p-6 overflow-x-auto shadow-md'>
         <table className='w-full text-sm text-center text-gray-500'>
