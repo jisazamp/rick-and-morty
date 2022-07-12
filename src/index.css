@@ -24,6 +24,6 @@ body {
 .form-group img {
   position: absolute;
   top: 50%;
-  left: 8%;
+  left: 20px;
   transform: translateY(-50%);
 }

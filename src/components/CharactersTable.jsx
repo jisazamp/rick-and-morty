@@ -5,6 +5,7 @@ import { FaQuestionCircle } from 'react-icons/fa';
 import ImageIcon from '../images/Icono imagen.png';
 import AliveIcon from '../images/Icono de vivo.png';
 import DeadIcon from '../images/Icono de muerto.png';
+import Pagination from '../layout/Pagination';
 
 const CharactersTable = () => {
   const { characters, filteredCharacters } = useContext(CharacterContext);
@@ -111,6 +112,8 @@ const CharactersTable = () => {
           </tbody>
         </table>
       </div>
+
+      {!filteredCharacters.results && <Pagination />}
     </div>
   );
 };
