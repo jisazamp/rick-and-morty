@@ -1,25 +1,24 @@
-import PropTypes from 'prop-types';
-
 import { useEffect, useContext } from 'react';
+
 import CharacterContext from '../context/characters/CharacterContext';
 import {
   getCharacters,
   getCharactersStatus,
 } from '../context/characters/CharacterActions';
-
-import CharacterAlive from './CharacterAlive';
-import CharacterDead from './CharacterDead';
 import CharacterSearchForm from './CharacterSearchForm';
+import AliveIcon from '../images/Icono de vivo.png';
+import DeadIcon from '../images/Icono de muerto.png';
 
 const CharacterStats = () => {
-  const { characters, loading, dispatch } = useContext(CharacterContext);
+  const { characters, aliveCharacters, deadCharacters, loading, dispatch } =
+    useContext(CharacterContext);
 
   useEffect(() => {
     dispatch({ type: 'SET_LOADING' });
     getCharactersData();
     getAliveCharacters();
     getDeadCharacters();
-  }, [dispatch]);
+  }, []);
 
   const getCharactersData = async () => {
     const characterData = await getCharacters();
@@ -53,21 +52,28 @@ const CharacterStats = () => {
       </div>
 
       <div className='flex items-center gap-4 px-3 py-2 border border-gray-300 rounded-md'>
-        <CharacterAlive />
+        {/* Alive characters */}
+        <div className='flex items-center'>
+          <img className='mr-2' src={AliveIcon} alt='Alive' /> Personajes vivos:{' '}
+          <span className='text-2xl ml-2 font-semibold text-gray-800'>
+            {loading ? 'Loading' : aliveCharacters.info?.count}
+          </span>
+        </div>
+
         <div className='vl'></div>
-        <CharacterDead />
+
+        {/* Dead characters */}
+        <div className='flex items-center'>
+          <img className='mr-2' src={DeadIcon} alt='Dead' /> Personajes muertos:{' '}
+          <span className='text-2xl ml-2 font-semibold text-gray-800'>
+            {loading ? 'Loading' : deadCharacters.info?.count}
+          </span>
+        </div>
       </div>
+
       <CharacterSearchForm />
     </div>
   );
-};
-
-CharacterStats.defaultProps = {
-  totalCharacters: 0,
-};
-
-CharacterStats.propTypes = {
-  totalCharacters: PropTypes.number,
 };
 
 export default CharacterStats;

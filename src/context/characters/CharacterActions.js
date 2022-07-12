@@ -16,7 +16,6 @@ export const getCharacters = async () => {
 export const getCharactersStatus = async (status) => {
   try {
     const response = await fetch(`${API_URL}/character/?status=${status}`);
-    console.log(response);
     const data = await response.json();
 
     return data;
