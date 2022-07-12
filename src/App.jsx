@@ -1,10 +1,13 @@
 import Home from './pages/Home';
+import { CharacterProvider } from './context/characters/CharacterContext';
 
 const App = () => {
   return (
-    <div>
-      <Home />
-    </div>
+    <CharacterProvider>
+      <div>
+        <Home />
+      </div>
+    </CharacterProvider>
   );
 };
 

@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
 .brand {
   filter: brightness(0) invert(1);
+}
+
+.vl {
+  border-left: 1px solid #dadada;
+  height: 28px;
 }
