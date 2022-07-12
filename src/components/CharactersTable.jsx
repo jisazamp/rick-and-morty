@@ -6,47 +6,64 @@ const CharactersTable = () => {
 
   return (
     <div className='border mt-6 rounded-lg border-gray-200 shadow-lg'>
-      <div className='relative p-6 overflow-x-auto shadow-md sm:rounded-lg'>
-        <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
-          <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+      <div className='relative p-6 overflow-x-auto shadow-md'>
+        <table className='w-full text-sm text-left text-gray-500'>
+          <thead className='text-white'>
             <tr>
-              <th scope='col' className='px-6 py-3'>
-                Product name
+              <th scope='col' className='px-6 py-3 bg-[#506266] rounded-tl-lg'>
+                Nombre
               </th>
-              <th scope='col' className='px-6 py-3'>
-                Color
+              <th scope='col' className='px-6 py-3 bg-[#506266]'>
+                Vivo
               </th>
-              <th scope='col' className='px-6 py-3'>
-                Category
+              <th scope='col' className='px-6 py-3 bg-[#506266]'>
+                Especie
               </th>
-              <th scope='col' className='px-6 py-3'>
-                Price
+              <th scope='col' className='px-6 py-3 bg-[#506266]'>
+                Género
               </th>
-              <th scope='col' className='px-6 py-3'>
-                <span className='sr-only'>Edit</span>
+              <th scope='col' className='px-6 py-3 bg-[#506266]'>
+                Origen
+              </th>
+              <th scope='col' className='px-6 py-3 bg-[#506266]'>
+                Locación
+              </th>
+              <th scope='col' className='px-6 py-3 bg-[#506266]'>
+                Capítulos
+              </th>
+              <th scope='col' className='px-6 py-3 bg-[#506266]'>
+                Fecha
+              </th>
+              <th scope='col' className='px-6 py-3 bg-[#506266] rounded-tr-lg'>
+                Acciones
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
-              <th
-                scope='row'
-                className='px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap'
-              >
-                Apple MacBook Pro 17"
-              </th>
-              <td className='px-6 py-4'>Sliver</td>
-              <td className='px-6 py-4'>Laptop</td>
-              <td className='px-6 py-4'>$2999</td>
-              <td className='px-6 py-4 text-right'>
-                <a
-                  href='#'
-                  className='font-medium text-blue-600 dark:text-blue-500 hover:underline'
+            {characters.results?.map((c) => (
+              <tr key={c.id}>
+                <th
+                  scope='row'
+                  className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap'
                 >
-                  Edit
-                </a>
-              </td>
-            </tr>
+                  {c.name}
+                </th>
+                <td className='px-6 py-4'>{c.status}</td>
+                <td className='px-6 py-4'>{c.species}</td>
+                <td className='px-6 py-4'>{c.gender}</td>
+                <td className='px-6 py-4'>{c.origin.name}</td>
+                <td className='px-6 py-4'>{c.location.name}</td>
+                <td className='px-6 py-4'>{c.episode.length}</td>
+                <td className='px-6 py-4'>
+                  {new Date(c.created).toLocaleString().split(',')[0]}
+                </td>
+                <td className='px-6 py-4'>
+                  <a href={c.image} target='_blank' rel='noreferrer'>
+                    Ver imagen
+                  </a>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
