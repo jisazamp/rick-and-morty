@@ -1,4 +1,4 @@
-# Frontend Mentor - Skilled e-learning landing page solution
+# Rick and Morty API
 
 This is a solution to a technical test that was put to me using the Rick and Morty API. The design was supplied as a file.
 
