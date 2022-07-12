@@ -7,7 +7,6 @@ export const CharacterProvider = ({ children }) => {
   const initialState = {
     characters: [],
     filteredCharacters: [],
-    currentPage: 1,
     aliveCharacters: [],
     deadCharacters: [],
     loading: false,

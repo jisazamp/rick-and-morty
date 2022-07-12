@@ -1,9 +1,9 @@
 const API_URL = import.meta.env.VITE_API_URL;
 
 // Get characters
-export const getCharacters = async () => {
+export const getCharacters = async (page = 1) => {
   try {
-    const response = await fetch(`${API_URL}/character`);
+    const response = await fetch(`${API_URL}/character/?page=${page}`);
     const data = await response.json();
 
     return data;
